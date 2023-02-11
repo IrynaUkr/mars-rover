@@ -21,7 +21,7 @@ class MarsRoverServiceTest {
 
     @BeforeEach
     void setUp() {
-        position = new RoverPosition(3, 3, NORTH);
+        position = new RoverPosition(3, 3, N);
         plateau = new RectPlateau(5, 5);
         marsRover = new MarsRover(plateau, position);
         roverService = new MarsRoverService(marsRover);
@@ -30,25 +30,25 @@ class MarsRoverServiceTest {
     @Test
     void moveTurnLefChangePositionTest() {
         Orientation actual  = roverService.move(LEFT_DIRECTION).getOrientation();
-        assertEquals(WEST, actual);
+        assertEquals(W, actual);
     }
 
     @Test
     void moveTurnRightChangePositionTest() {
         Orientation actual= roverService.move(RIGHT_DIRECTION).getOrientation();
-        assertEquals(EAST, actual);
+        assertEquals(E, actual);
     }
 
     @Test
     void moveForwardIfOrientationNorth() {
-        position.setOrientation(NORTH);
+        position.setOrientation(N);
         int actualY = roverService.move(FORWARD_DIRECTION).getY();
         int expectedY = 4;
         assertEquals(expectedY, actualY);
     }
     @Test
     void moveForwardIfOrientationSouth() {
-        position.setOrientation(SOUTH);
+        position.setOrientation(S);
         roverService.move(FORWARD_DIRECTION);
         int actualY = marsRover.getPosition().getY();
         int expectedY = 2;
@@ -56,7 +56,7 @@ class MarsRoverServiceTest {
     }
     @Test
     void moveForwardIfOrientationEast() {
-        position.setOrientation(EAST);
+        position.setOrientation(E);
         roverService.move(FORWARD_DIRECTION);
         int actualX = marsRover.getPosition().getX();
         int expectedX = 4;
@@ -64,7 +64,7 @@ class MarsRoverServiceTest {
     }
     @Test
     void moveForwardIfOrientationWest() {
-        position.setOrientation(WEST);
+        position.setOrientation(W);
         roverService.move(FORWARD_DIRECTION);
         int actualX = marsRover.getPosition().getX();
         int expectedX = 2;

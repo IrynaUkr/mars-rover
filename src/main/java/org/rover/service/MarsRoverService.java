@@ -32,10 +32,10 @@ public class MarsRoverService {
         Orientation orientation = position.getOrientation();
 
         switch (orientation) {
-            case NORTH -> changeYPositionGoForward(rover);
-            case SOUTH -> changeYPositionGoBack(rover);
-            case EAST -> changeXPositionGoRight(rover);
-            case WEST -> changeXPositionGoLeft(rover);
+            case N -> changeYPositionGoForward(rover);
+            case S -> changeYPositionGoBack(rover);
+            case E -> changeXPositionGoRight(rover);
+            case W -> changeXPositionGoLeft(rover);
         }
     }
 
@@ -77,10 +77,10 @@ public class MarsRoverService {
         Orientation orientation = position.getOrientation();
 
         switch (orientation) {
-            case NORTH -> position.setOrientation(Orientation.EAST);
-            case EAST -> position.setOrientation(Orientation.SOUTH);
-            case SOUTH -> position.setOrientation(Orientation.WEST);
-            case WEST -> position.setOrientation(Orientation.NORTH);
+            case N -> position.setOrientation(Orientation.E);
+            case E -> position.setOrientation(Orientation.S);
+            case S -> position.setOrientation(Orientation.W);
+            case W -> position.setOrientation(Orientation.N);
         }
     }
 
@@ -89,10 +89,10 @@ public class MarsRoverService {
         Orientation orientation = position.getOrientation();
 
         switch (orientation) {
-            case NORTH -> position.setOrientation(Orientation.WEST);
-            case EAST -> position.setOrientation(Orientation.NORTH);
-            case SOUTH -> position.setOrientation(Orientation.EAST);
-            case WEST -> position.setOrientation(Orientation.SOUTH);
+            case N -> position.setOrientation(Orientation.W);
+            case E -> position.setOrientation(Orientation.N);
+            case S -> position.setOrientation(Orientation.E);
+            case W -> position.setOrientation(Orientation.S);
         }
     }
 
