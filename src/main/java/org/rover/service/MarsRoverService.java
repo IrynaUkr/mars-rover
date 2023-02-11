@@ -17,8 +17,20 @@ public class MarsRoverService {
             switch (action) {
                 case 'L' -> turnLeft(rover);
                 case 'R' -> turnRight(rover);
-                // case 'M' -> change(position);
+                case 'M' -> goForward(rover);
+                default -> throw new IllegalArgumentException("wrong direction");
             }
+        }
+    }
+
+    private void goForward(MarsRover rover) {
+
+        RoverPosition position = rover.getPosition();
+        Orientation orientation = position.getOrientation();
+        switch (orientation) {
+            case NORTH, SOUTH -> position.setY(position.getY() + 1);
+            case EAST -> position.setX(position.getX() + 1);
+            case WEST -> position.setX(position.getX() - 1);
         }
     }
 
@@ -26,7 +38,7 @@ public class MarsRoverService {
         RoverPosition position = rover.getPosition();
         Orientation orientation = position.getOrientation();
 
-        switch (orientation){
+        switch (orientation) {
             case NORTH -> position.setOrientation(Orientation.EAST);
             case EAST -> position.setOrientation(Orientation.SOUTH);
             case SOUTH -> position.setOrientation(Orientation.WEST);
@@ -34,11 +46,11 @@ public class MarsRoverService {
         }
     }
 
-     private void turnLeft(MarsRover rover) {
+    private void turnLeft(MarsRover rover) {
         RoverPosition position = rover.getPosition();
         Orientation orientation = position.getOrientation();
 
-        switch (orientation){
+        switch (orientation) {
             case NORTH -> position.setOrientation(Orientation.WEST);
             case EAST -> position.setOrientation(Orientation.NORTH);
             case SOUTH -> position.setOrientation(Orientation.EAST);
