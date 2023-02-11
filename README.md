@@ -5,11 +5,6 @@ Coordinates are stored in fields posX, posY.
 The lower-left coordinate of the Plateau is (0,0)
 Rover can't move beyond of the border
 
-When the rover moves we need to check the border of the Plateau.
-????
-Possibly there are several rovers in the Plateau... 
-in that case we need to check if the Plateau position is available
-
 ### The Mars Rover class impl Rover
 Mars Rover depends on:
 * Plateau(rover needs borders' data)

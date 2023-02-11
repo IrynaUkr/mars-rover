@@ -57,8 +57,8 @@ class MarsRoverServiceTest {
     @Test
     void moveForwardIfOrientationEast() {
         position.setOrientation(E);
-        roverService.move(FORWARD_DIRECTION);
-        int actualX = marsRover.getPosition().getX();
+
+        int actualX = roverService.move(FORWARD_DIRECTION).getX();
         int expectedX = 4;
         assertEquals(expectedX, actualX);
     }
