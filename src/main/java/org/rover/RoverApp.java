@@ -1,6 +1,6 @@
 package org.rover;
 
-import org.rover.exception.IncorrectDirectionException;
+import org.rover.exception.IncorrectPositionException;
 import org.rover.model.MarsRover;
 import org.rover.model.Orientation;
 import org.rover.model.RectPlateau;
@@ -44,14 +44,12 @@ public class RoverApp {
 
     private static RoverPosition createRoverPosition(String plateauCoordinates) {
         if (plateauCoordinates.matches("\\d\\s\\d\\s['N|S|W|E']")) {
-
             int roverX = plateauCoordinates.charAt(0) - '0';
             int roverY = plateauCoordinates.charAt(2) - '0';
             Orientation orientation = Orientation.valueOf(plateauCoordinates.charAt(4) + "");
             return new RoverPosition(roverX, roverY, orientation);
         }
-        throw new IncorrectDirectionException("");
-
+        throw new IncorrectPositionException("The string of Rover position is incorrect");
     }
 
 }
