@@ -10,6 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.rover.model.Orientation.*;
 
 class MarsRoverServiceTest {
+    public static final String LEFT_DIRECTION = "L";
+    public static final String RIGHT_DIRECTION = "R";
+    public static final String FORWARD_DIRECTION = "M";
+    public static final String INCORRECT_DIRECTION = "U";
     RoverPosition position;
     RectPlateau plateau;
     MarsRover marsRover;
@@ -25,30 +29,27 @@ class MarsRoverServiceTest {
 
     @Test
     void moveTurnLefChangePositionTest() {
-        roverService.move("L");
-        Orientation actual = marsRover.getPosition().getOrientation();
+        Orientation actual  = roverService.move(LEFT_DIRECTION).getOrientation();
         assertEquals(WEST, actual);
     }
 
     @Test
     void moveTurnRightChangePositionTest() {
-        roverService.move("R");
-        Orientation actual = marsRover.getPosition().getOrientation();
+        Orientation actual= roverService.move(RIGHT_DIRECTION).getOrientation();
         assertEquals(EAST, actual);
     }
 
     @Test
     void moveForwardIfOrientationNorth() {
         position.setOrientation(NORTH);
-        roverService.move("M");
-        int actualY = marsRover.getPosition().getY();
+        int actualY = roverService.move(FORWARD_DIRECTION).getY();
         int expectedY = 4;
         assertEquals(expectedY, actualY);
     }
     @Test
     void moveForwardIfOrientationSouth() {
         position.setOrientation(SOUTH);
-        roverService.move("M");
+        roverService.move(FORWARD_DIRECTION);
         int actualY = marsRover.getPosition().getY();
         int expectedY = 2;
         assertEquals(expectedY, actualY);
@@ -56,7 +57,7 @@ class MarsRoverServiceTest {
     @Test
     void moveForwardIfOrientationEast() {
         position.setOrientation(EAST);
-        roverService.move("M");
+        roverService.move(FORWARD_DIRECTION);
         int actualX = marsRover.getPosition().getX();
         int expectedX = 4;
         assertEquals(expectedX, actualX);
@@ -64,7 +65,7 @@ class MarsRoverServiceTest {
     @Test
     void moveForwardIfOrientationWest() {
         position.setOrientation(WEST);
-        roverService.move("M");
+        roverService.move(FORWARD_DIRECTION);
         int actualX = marsRover.getPosition().getX();
         int expectedX = 2;
         assertEquals(expectedX, actualX);
@@ -72,7 +73,7 @@ class MarsRoverServiceTest {
 
     @Test
     void throwExceptionIfDirectionNotValid(){
-        assertThrows(IncorrectDirectionException.class, ()->roverService.move("U"));
+        assertThrows(IncorrectDirectionException.class, ()->roverService.move(INCORRECT_DIRECTION));
     }
 
 }

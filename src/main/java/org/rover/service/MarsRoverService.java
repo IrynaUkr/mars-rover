@@ -14,7 +14,7 @@ public class MarsRoverService {
         this.rover = rover;
     }
 
-    public void move(String direction) {
+    public RoverPosition move(String direction) {
         char[] actions = direction.toCharArray();
         for (Character action : actions) {
             switch (action) {
@@ -24,6 +24,7 @@ public class MarsRoverService {
                 default -> throw new IncorrectDirectionException("Direction should be L,R or M");
             }
         }
+        return rover.getPosition();
     }
 
     private void goForward(MarsRover rover) {

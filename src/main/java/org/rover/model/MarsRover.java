@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class MarsRover implements Rover {
     RectPlateau plateau;
-
     RoverPosition position;
 
 }
