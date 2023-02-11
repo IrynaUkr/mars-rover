@@ -8,5 +8,6 @@ import lombok.Data;
 public class RoverPosition {
     private int x;
     private int y;
-     Orientation orientation;
+    private Orientation orientation;
+
 }

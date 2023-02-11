@@ -6,9 +6,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class MarsRover implements Rover {
-    RectPlateau plateau;
-    RoverPosition position;
+    private final RectPlateau plateau;
+    private final RoverPosition position;
 
 }
-
-

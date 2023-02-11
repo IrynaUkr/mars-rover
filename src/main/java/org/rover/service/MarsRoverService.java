@@ -1,18 +1,17 @@
 package org.rover.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.rover.exception.IncorrectDirectionException;
 import org.rover.exception.StepOutOfBorderException;
 import org.rover.model.MarsRover;
 import org.rover.model.Orientation;
 import org.rover.model.RoverPosition;
-
+@Data
+@AllArgsConstructor
 public class MarsRoverService {
     public static final String MESSAGE = "The Rover can't move on, the border has been reached.";
-    MarsRover rover;
-
-    public MarsRoverService(MarsRover rover) {
-        this.rover = rover;
-    }
+    private MarsRover rover;
 
     public RoverPosition move(String direction) {
         char[] actions = direction.toCharArray();
