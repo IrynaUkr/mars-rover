@@ -13,4 +13,7 @@ in that case we need to check if the Plateau position is available
 Mars Rover depends on:
 * Plateau(it needs the info of borders)
 * RoverPosition(class helps easy store data coordinates and direction where the rover is facing)
-when rover moves it takes direction string and spins if there are L or R and go forward in facing direction
+When rover moves, it takes direction string and spins if there are L or R and go forward in facing direction
+
+To make a move Rover should have methods, turnLeft, TurnRight and  goForward.
+The methods that serve the rover are in the MarsServiceClass class, which corresponds to the Single Responsibility Principle.

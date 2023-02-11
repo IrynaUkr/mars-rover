@@ -10,17 +10,22 @@ public class MarsRover implements Rover {
         this.position = position;
     }
 
-    @Override
-    public void move(String direction) {
-        char[] actions = direction.toCharArray();
-        for (Character action : actions) {
-            switch (action) {
-                case 'L' -> position.setOrientation(position.getOrientation() - 90);
-                case 'R' -> position.setOrientation(position.getOrientation() + 90);
-                // case 'M' -> change(position);
-            }
-        }
+    public Plateau getPlateau() {
+        return plateau;
+    }
 
+    public void setPlateau(Plateau plateau) {
+        this.plateau = plateau;
+    }
+
+    public RoverPosition getPosition() {
+        return position;
+    }
+
+    public void setPosition(RoverPosition position) {
+        this.position = position;
     }
 
 }
+
+
