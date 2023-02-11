@@ -1,12 +1,12 @@
 package org.rover.model;
 
-public class RectPlateau implements Plateau{
-    public int posX;
-    public int posY;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-    public RectPlateau(int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
-    }
+@AllArgsConstructor
+@Data
+public class RectPlateau implements Plateau{
+    private final int posX;
+    private final int posY;
 
 }
