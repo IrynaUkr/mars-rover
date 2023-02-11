@@ -2,9 +2,11 @@ package org.rover.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.rover.exception.IncorrectDirectionException;
 import org.rover.model.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.rover.model.Orientation.*;
 
 class MarsRoverServiceTest {
@@ -66,6 +68,11 @@ class MarsRoverServiceTest {
         int actualX = marsRover.getPosition().getX();
         int expectedX = -1;
         assertEquals(expectedX, actualX);
+    }
+
+    @Test
+    void throwExceptionIfDirectionNotValid(){
+        assertThrows(IncorrectDirectionException.class, ()->roverService.move("U"));
     }
 
 }

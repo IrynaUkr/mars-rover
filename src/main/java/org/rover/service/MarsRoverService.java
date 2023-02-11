@@ -1,5 +1,6 @@
 package org.rover.service;
 
+import org.rover.exception.IncorrectDirectionException;
 import org.rover.model.MarsRover;
 import org.rover.model.Orientation;
 import org.rover.model.RoverPosition;
@@ -18,15 +19,15 @@ public class MarsRoverService {
                 case 'L' -> turnLeft(rover);
                 case 'R' -> turnRight(rover);
                 case 'M' -> goForward(rover);
-                default -> throw new IllegalArgumentException("wrong direction");
+                default -> throw new IncorrectDirectionException("Direction should be L,R or M");
             }
         }
     }
 
     private void goForward(MarsRover rover) {
-
         RoverPosition position = rover.getPosition();
         Orientation orientation = position.getOrientation();
+
         switch (orientation) {
             case NORTH, SOUTH -> position.setY(position.getY() + 1);
             case EAST -> position.setX(position.getX() + 1);
