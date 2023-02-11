@@ -3,6 +3,7 @@
 The Plateau describes the grid, it has maximum coordinates (x,y).
 Coordinates are stored in fields posX, posY.
 The lower-left coordinate of the Plateau is (0,0)
+Rover can't move beyond of the border
 
 When the rover moves we need to check the border of the Plateau.
 ????

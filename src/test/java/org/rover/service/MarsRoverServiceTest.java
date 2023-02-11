@@ -11,13 +11,13 @@ import static org.rover.model.Orientation.*;
 
 class MarsRoverServiceTest {
     RoverPosition position;
-    Plateau plateau;
+    RectPlateau plateau;
     MarsRover marsRover;
     MarsRoverService roverService;
 
     @BeforeEach
     void setUp() {
-        position = new RoverPosition(0, 0, NORTH);
+        position = new RoverPosition(3, 3, NORTH);
         plateau = new RectPlateau(5, 5);
         marsRover = new MarsRover(plateau, position);
         roverService = new MarsRoverService(marsRover);
@@ -42,7 +42,7 @@ class MarsRoverServiceTest {
         position.setOrientation(NORTH);
         roverService.move("M");
         int actualY = marsRover.getPosition().getY();
-        int expectedY = 1;
+        int expectedY = 4;
         assertEquals(expectedY, actualY);
     }
     @Test
@@ -50,7 +50,7 @@ class MarsRoverServiceTest {
         position.setOrientation(SOUTH);
         roverService.move("M");
         int actualY = marsRover.getPosition().getY();
-        int expectedY = 1;
+        int expectedY = 2;
         assertEquals(expectedY, actualY);
     }
     @Test
@@ -58,7 +58,7 @@ class MarsRoverServiceTest {
         position.setOrientation(EAST);
         roverService.move("M");
         int actualX = marsRover.getPosition().getX();
-        int expectedX = 1;
+        int expectedX = 4;
         assertEquals(expectedX, actualX);
     }
     @Test
@@ -66,7 +66,7 @@ class MarsRoverServiceTest {
         position.setOrientation(WEST);
         roverService.move("M");
         int actualX = marsRover.getPosition().getX();
-        int expectedX = -1;
+        int expectedX = 2;
         assertEquals(expectedX, actualX);
     }
 
