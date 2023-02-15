@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.rover.exception.IncorrectDirectionException;
 import org.rover.model.*;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.rover.model.Orientation.*;
@@ -22,7 +24,7 @@ class MarsRoverServiceTest {
     @BeforeEach
     void setUp() {
         position = new RoverPosition(3, 3, N);
-        plateau = new RectPlateau(5, 5);
+        plateau = new RectPlateau(5, 5, new ArrayList<>());
         marsRover = new MarsRover(plateau, position);
         roverService = new MarsRoverService(marsRover);
     }
