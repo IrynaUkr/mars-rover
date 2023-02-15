@@ -13,14 +13,14 @@ public class PlateauService {
         this.plateau = plateau;
     }
 
-    public boolean addRover(MarsRover rover) {
+     public boolean addRover(MarsRover rover) {
         if(isOccupied(rover.getPosition())){
             throw new IncorrectPositionException("position is already occupied");
         }
         return plateau.getRovers().add(rover);
     }
 
-    public boolean isOccupied(RoverPosition position) {
+     boolean isOccupied(RoverPosition position) {
         List<MarsRover> rovers =plateau.getRovers();
         for (MarsRover rover : rovers) {
             if (rover.getPosition().getY()== position.getY() && rover.getPosition().getX() == position.getX()) {
