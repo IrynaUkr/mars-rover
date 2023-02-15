@@ -50,7 +50,7 @@ public class MarsRoverService {
         if (borderY >= roverStepY) {
             position.setY(roverStepY);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isOccupied(rover, position)) {
+        if (isPositionOccupied(rover, position)) {
             throw new IncorrectPositionException(POSITION_OCCUPIED);
         }
     }
@@ -62,7 +62,7 @@ public class MarsRoverService {
         if (borderY <= roverStepY) {
             position.setY(roverStepY);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isOccupied(rover, position)) {
+        if (isPositionOccupied(rover, position)) {
             throw new IncorrectPositionException(POSITION_OCCUPIED);
         }
     }
@@ -74,7 +74,7 @@ public class MarsRoverService {
         if (borderX >= roverStepX) {
             position.setX(roverStepX);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isOccupied(rover, position)) {
+        if (isPositionOccupied(rover, position)) {
             throw new IncorrectPositionException(POSITION_OCCUPIED);
         }
     }
@@ -86,7 +86,7 @@ public class MarsRoverService {
         if (borderX <= roverStepX) {
             position.setX(roverStepX);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isOccupied(rover, position)) {
+        if (isPositionOccupied(rover, position)) {
             throw new IncorrectPositionException(POSITION_OCCUPIED);
         }
     }
@@ -115,12 +115,10 @@ public class MarsRoverService {
         }
     }
 
-    private static boolean isOccupied(MarsRover rover, RoverPosition position) {
+    private static boolean isPositionOccupied(MarsRover rover, RoverPosition newPosition) {
         List<MarsRover> rovers = rover.getPlateau().getRovers();
-
-        for (MarsRover currentRov : rovers) {
-
-            if (currentRov.getPosition().getY() == position.getY() && currentRov.getPosition().getX() == position.getX()) {
+        for (MarsRover с : rovers) {
+            if (с.getPosition().getY() == newPosition.getY() && с.getPosition().getX() == newPosition.getX()) {
                 return true;
             }
         }

@@ -11,6 +11,7 @@ import org.rover.model.RoverPosition;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.rover.model.Orientation.S;
 
 class PlateauServiceTest {
     PlateauService plateauService;
@@ -33,16 +34,22 @@ class PlateauServiceTest {
 
 
     @Test
-    void shouldAddRoversWithDifCoordPlateau() {
+    void shouldAddRoversWithDifferentCoordinatesOnThePlateau() {
         assertTrue(plateauService.addRover(roverZero));
         assertTrue(plateauService.addRover(roverOne));
         assertEquals(2, plateau.getRovers().size());
     }
+
     @Test
-    void shouldThrow(){
+    void shouldThrowIncorrectPositionExceptionIfPositionOccupied() {
         plateauService.addRover(roverOne);
-        assertThrows(IncorrectPositionException.class, ()->plateauService.addRover(roverOne));
+        assertThrows(IncorrectPositionException.class, () -> plateauService.addRover(roverOne));
     }
 
+    @Test
+    void shouldThrowIncorrectPositionExceptionIfPositionNotInThePlateau() {
+        MarsRover rover = new MarsRover(plateau, new RoverPosition(10, 10, S));
+        assertThrows(IncorrectPositionException.class, () -> plateauService.addRover(rover));
+    }
 
 }

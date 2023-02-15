@@ -18,4 +18,25 @@ To make a move Rover has  turnLeft, turnRight and goForward methods.
 
 _The methods that serve the rover are in the MarsServiceClass class, which corresponds to the Single Responsibility Principle._
 
-https://www.diagrams.net
+**Example Test Case** :
+ To Run the program go to the App class and run it.
+
+ Follow the instructions which you will see in the console output
+
+_Lines of Input to the Program:_
+
+5 5
+
+1 2 N
+
+LMLMLMLMM
+
+3 3 E
+
+MMRMMRMRRM
+
+Expected Output:
+
+1 3 N
+
+5 1 E
