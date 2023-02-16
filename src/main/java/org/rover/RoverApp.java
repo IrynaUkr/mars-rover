@@ -4,6 +4,7 @@ import org.rover.model.MarsRover;
 import org.rover.model.RectPlateau;
 import org.rover.model.RoverPosition;
 import org.rover.service.MarsRoverService;
+import org.rover.service.PlateauService;
 
 import java.util.Scanner;
 
@@ -19,19 +20,27 @@ public class RoverApp {
         String plateauCoordinates = scanner.nextLine();
         RectPlateau plateau = createPlateau(plateauCoordinates);
 
-
-        System.out.println("Enter coordinates and facing of the  rover (in the form x y N):");
-        String roverPositionData = scanner.nextLine();
-        RoverPosition roverPosition = createRoverPosition(roverPositionData);
-        MarsRover rover = new MarsRover(plateau, roverPosition);
+        System.out.println("Enter rovers amount:");
+        int roverAmount = Integer.parseInt(scanner.nextLine());
+        while(roverAmount> 0) {
 
 
-        System.out.println("Enter Directions without spaces(in the form LMRLMR)");
-        String directions = scanner.nextLine();
+            System.out.println("Enter coordinates and facing of the  rover (in the form x y N):");
+            String roverPositionData = scanner.nextLine();
+            RoverPosition roverPosition = createRoverPosition(roverPositionData);
+            MarsRover rover = new MarsRover(plateau, roverPosition);
 
-        MarsRoverService roverService = new MarsRoverService(rover);
-        RoverPosition move = roverService.move(directions);
-        System.out.println(move);
+            PlateauService plateauService = new PlateauService(plateau);
+            plateauService.addRover(rover);
+
+            System.out.println("Enter Directions without spaces(in the form LMRLMR)");
+            String directions = scanner.nextLine();
+
+            MarsRoverService roverService = new MarsRoverService(rover);
+            RoverPosition move = roverService.move(directions);
+            System.out.println(move);
+            roverAmount--;
+        }
 
     }
 
