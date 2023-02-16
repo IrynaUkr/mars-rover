@@ -20,10 +20,18 @@ The method move are simple, it changes the coordinates for 1 step  according to 
 
 _The methods that serve the rover are in the MarsServiceClass class, which corresponds to the Single Responsibility Principle._
 
-**Example Test Case** :
+## Functionality that supports multiple rovers works sequentially
+* the service method checks if the position is occupied with other rover.
+* The new rover will be placed at the RoverPlateau
+* Rover takes the directions and go there.
+* Rover can not move through th occupied position
+* Rover occupied the position at the end of its direction
+
+**Example Test Case**
  To Run the program go to the App class and run it.
 
- Follow the instructions which you will see in the console output
+Follow the instructions which you will see in the console output.
+If you want to run several amount of rovers you need to enter the amount of rovers more than 1, otherwise enter more.
 
 _Lines of Input to the Program:_
 
@@ -42,3 +50,8 @@ Expected Output:
 1 3 N
 
 5 1 E
+
+
+Ideas to improve app
+This app can be converted in web application, we just need instead of console input/output UI implement the REST API.
+It would be interesting to add concurrent Functionality that supports multiple rovers

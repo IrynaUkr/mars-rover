@@ -47,48 +47,50 @@ public class MarsRoverService {
         RoverPosition position = rover.getPosition();
         int borderY = rover.getPlateau().getPosY();
         int roverStepY = position.getY() + 1;
+        if (isPositionOccupied(rover, new RoverPosition(position.getX(),roverStepY,position.getOrientation()))) {
+            throw new IncorrectPositionException(POSITION_OCCUPIED);
+        }
         if (borderY >= roverStepY) {
             position.setY(roverStepY);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isPositionOccupied(rover, position)) {
-            throw new IncorrectPositionException(POSITION_OCCUPIED);
-        }
     }
 
     private static void changeYPositionGoBack(MarsRover rover) {
         RoverPosition position = rover.getPosition();
         int borderY = 0;
         int roverStepY = position.getY() - 1;
+        if (isPositionOccupied(rover, new RoverPosition(position.getX(),roverStepY,position.getOrientation()))) {
+            throw new IncorrectPositionException(POSITION_OCCUPIED);
+        }
         if (borderY <= roverStepY) {
             position.setY(roverStepY);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isPositionOccupied(rover, position)) {
-            throw new IncorrectPositionException(POSITION_OCCUPIED);
-        }
     }
 
     private static void changeXPositionGoRight(MarsRover rover) {
         RoverPosition position = rover.getPosition();
         int borderX = rover.getPlateau().getPosX();
         int roverStepX = position.getX() + 1;
+        if (isPositionOccupied(rover, new RoverPosition(roverStepX,position.getY(),position.getOrientation()))) {
+            throw new IncorrectPositionException(POSITION_OCCUPIED);
+        }
         if (borderX >= roverStepX) {
             position.setX(roverStepX);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isPositionOccupied(rover, position)) {
-            throw new IncorrectPositionException(POSITION_OCCUPIED);
-        }
+
     }
 
     private static void changeXPositionGoLeft(MarsRover rover) {
         RoverPosition position = rover.getPosition();
         int borderX = 0;
         int roverStepX = position.getX() - 1;
+        if (isPositionOccupied(rover, new RoverPosition(roverStepX,position.getY(),position.getOrientation()))) {
+            throw new IncorrectPositionException(POSITION_OCCUPIED);
+        }
         if (borderX <= roverStepX) {
             position.setX(roverStepX);
         } else throw new StepOutOfBorderException(BORDER_HAS_BEEN_REACHED);
-        if (isPositionOccupied(rover, position)) {
-            throw new IncorrectPositionException(POSITION_OCCUPIED);
-        }
+
     }
 
     private void turnRight(MarsRover rover) {
