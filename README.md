@@ -20,6 +20,7 @@ The method move are simple, it changes the coordinates for 1 step  according to 
 
 _The methods that serve the rover are in the MarsServiceClass class, which corresponds to the Single Responsibility Principle._
 
+
 ## Functionality that supports multiple rovers works sequentially
 * the service method checks if the position is occupied with other rover.
 * The new rover will be placed at the RoverPlateau
@@ -55,3 +56,17 @@ Expected Output:
 Ideas to improve app
 This app can be converted in web application, we just need instead of console input/output UI implement the REST API.
 It would be interesting to add concurrent Functionality that supports multiple rovers
+=======
+**Example Test Case :**
+Lines of Input to the Program:
+5 5
+
+1 2 N
+LMLMLMLMM
+
+3 3 E
+MMRMMRMRRM
+Expected Output:
+1 3 N
+5 1 E
+
